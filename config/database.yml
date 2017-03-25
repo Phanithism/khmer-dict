@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: khmer-dict_development
+
+test:
+  <<: *default
+  database: khmer-dict_test
+
+production:
+  <<: *default
+  database: khmer-dict_production
+  username: khmer-dict
+  password: <%= ENV['KHMER-DICT_DATABASE_PASSWORD'] %>
